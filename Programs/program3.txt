@@ -1,0 +1,53 @@
+; Program 3 for the Final Project
+; Purpose: Reverse the bits of the given number (NBits) to produce an output (RBits).
+JMP start
+; Variables
+NBits: abcd1234 ;Input
+RBits: 00000000 ;Declared result
+ONE: 00000001 ;Used to write RBits
+ZERO: 00000000 ;Used to compare NBits with itself
+LOGCONV: 7fffffff ;Used for conversion from arithmetic to logical shift
+start: ; the label 'start'. The jump statement earlier jumps here
+LDAC NBits ;Display given input (NBits)
+OUT
+CLAC
+JMP COMPARATOR ;Start the process
+
+COMPARATOR: ; While NBits is greater than zero
+LDAC ZERO
+MVAC
+LDAC NBits
+SUB ; In the case NBits becomes equal to zero, this will conclude
+JMPZ Done
+JMP Loop ;Loop
+
+Loop:
+CLAC
+LDAC RBits
+MVAC
+ADD
+STAC RBits ; RBits << LEFT
+CLAC
+LDAC ONE ;IF NBits and ONE = 1
+MVAC
+LDAC NBits
+AND
+MVAC ;OR with RBits
+LDAC RBits
+OR
+STAC RBits
+CLAC
+LDAC LOGCONV ;Prepare conversion to logical shift
+MVAC
+CLAC
+LDAC NBits ; Load NBits to be right-shifted
+ASHR ; NBits >> RIGHT
+AND ; Conversion to logical shift to negate signed properties
+STAC NBits
+CLAC
+JMP COMPARATOR ; Check if NBits is greater than zero
+
+Done:
+LDAC RBits ; Display output (RBits)
+OUT
+HALT

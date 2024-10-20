@@ -1,0 +1,65 @@
+﻿; Program 2
+JMP main
+; Variables
+var1: 000000A9
+var2: 0000002B
+; Outputs
+out1: 00000000
+out2: 00000000
+out3: 00000000
+out4: 00000000
+out5: 00000000
+out6: 000000af
+out7: 000000d1
+main:
+;Instruction for A9 + 2B
+LDAC var1 ; ACC <-- A9
+MVAC            ; R <-- A9 (ACC)
+LDAC var2 ; ACC <-- 2B
+ADD              ; A9 + 2B
+OUT              ; Output is now A9 + 2B
+STAC out1 ; out1 = A9 + 2B
+
+;Instruction for A9 - 2B
+LDAC var2 ; ACC <-- 2B
+MVAC            ; R <-- 2B
+LDAC var1 ; ACC <-- A9
+SUB              ; A9 - 2B
+OUT              ; Output is now A9 - 2B
+STAC out2 ; out2 = A9 - 2B
+
+;Instruction for A9 AND 2B
+LDAC var1 ; ACC <-- A9
+AND              ; A9 & 2B
+OUT              ; Output is now A9 & 2B
+STAC out3 ; out3 = A9 & 2B
+
+;Instruction for A9 OR 2B
+LDAC var1 ; ACC <-- A9
+OR                ; A9 | 2B
+OUT              ; Output is now A9 | 2B
+STAC out4 ; out4 = A9 | 2B
+
+;Instruction for A9 right shift
+LDAC var1 ; ACC <-- A9
+MVAC            ; R <-- A9 (ACC)
+ASHR            ; ASHR A9
+OUT              ; Output is now ASHR A9
+STAC out5 ; out5 = ASHR A9
+
+;Instruction for AF increment
+LDAC out6 ; ACC <-- AF
+INC              ; ACC = ACC + 1
+OUT
+STAC out6 ; out6 = AF + 1
+MOVR            ; ACC <-- AF + 1 (R)
+CLAC            ; ACC = 0
+
+;Instruction for NOT D1
+LDAC out7 ; ACC = D1
+NOT              ; ~D1
+OUT
+STAC out7 ; out7 = ~D1
+
+;Stop program
+HALT

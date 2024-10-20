@@ -1,0 +1,12 @@
+﻿; Program 1
+JMP main
+; Variables
+VariableA: 0000000a
+VariableF: 0000000f
+main:              
+LDAC VariableA ; Load A into ACC
+MVAC          ; Move ACC containing A value to R
+LDAC VariableF ; Load F into ACC
+SUB              ; Subtract ACC (F) and R (A), store result in ACC
+OUT              ; Output result
+HALT            ; Stop program
