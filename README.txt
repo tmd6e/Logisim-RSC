@@ -8,3 +8,7 @@ When testing the RSC's assembly programs, follow these instructions:
 5. Navigate to Simulate at the top of the window and ensure Simulation Enabled is on.
 6. In the Simulate dropdown menu, set the tick frequency to 4.1 KHz and toggle on Ticks Enabled.
 NOTE: Before testing another bytecode file, select Simulate >> Reset Simulation and toggle off Ticks Enabled. After that, repeat Steps 3 through 6 with the desired bytecode.
+
+Program 1: Subtracts the binary number 0xA from 0xF.
+Program 2: Performs addition, subtraction, logical AND/OR/NOT, right shift, and increment on binary numbers 0xA9 and 0x2B.
+Program 3: Reverses the bits of a given binary number.
